@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Pour toi ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* Background slideshow */
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.bg img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  animation: slide 24s infinite;
+}
+
+.bg img:nth-child(1) { animation-delay: 0s; }
+.bg img:nth-child(2) { animation-delay: 6s; }
+.bg img:nth-child(3) { animation-delay: 12s; }
+.bg img:nth-child(4) { animation-delay: 18s; }
+
+@keyframes slide {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  25% { opacity: 1; }
+  35% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* Section */
+.section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Typing */
+.typing {
+  font-size: 2em;
+  border-right: 2px solid white;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 20px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 Musique -->
+<audio autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 🖼️ Images -->
+<div class="bg">
+  <img src="photo1.jpg">
+  <img src="photo2.jpg">
+  <img src="photo3.jpg">
+  <img src="photo4.jpg">
+</div>
+
+<!-- 💌 Texte -->
+<div class="section"><div class="typing" data-text="Au début… je savais pas quoi dire"></div></div>
+<div class="section"><div class="typing" data-text="Mais en regardant tous ces moments…"></div></div>
+<div class="section"><div class="typing" data-text="J’ai compris quelque chose d’important"></div></div>
+<div class="section"><div class="typing" data-text="Tu es une personne incroyable"></div></div>
+<div class="section"><div class="typing" data-text="Une personne rare, qu’on ne croise pas tous les jours"></div></div>
+<div class="section"><div class="typing" data-text="Et honnêtement… je suis content de te connaître ❤️"></div></div>
+<div class="section"><div class="typing" data-text="Merci pour tous ces moments"></div></div>
+<div class="section"><div class="typing" data-text="Et ce n’est que le début…"></div></div>
+<div class="section"><div class="typing" data-text="Joyeux anniversaire 🎉"></div></div>
+<div class="section"><div class="typing" data-text="Profite de ta journée… tu le mérites vraiment ❤️"></div></div>
+
+<script>
+const texts = document.querySelectorAll('.typing');
+
+texts.forEach((el) => {
+  let text = el.getAttribute("data-text");
+  let i = 0;
+
+  function type() {
+    if (i < text.length) {
+      el.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(type, 50);
+    }
+  }
+
+  window.addEventListener("scroll", () => {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight - 50 && el.innerHTML === "") {
+      type();
+    }
+  });
+});
+</script>
+
+</body>
+</html>
