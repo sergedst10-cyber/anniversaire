@@ -3,65 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pour toi ❤️</title>
+<title>Pour Arielle ❤️</title>
 <style>
-  body { 
-    margin: 0; 
-    font-family: Arial, sans-serif; 
-    color: white; 
-    text-align: center; 
-    background: black; 
-  }
-  .bg { 
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 100vw; 
-    height: 100vh; 
-    z-index: -1; 
-    background: black;
-  }
-  .bg img { 
-    position: absolute; 
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    min-width: 100%; 
-    min-height: 100%; 
-    object-fit: cover; 
-    opacity: 0; 
-    animation: slide 60s infinite; 
-  }
-  /* On garde tes délais d'animation */
-  .bg img:nth-child(1) { animation-delay: 0s; } .bg img:nth-child(2) { animation-delay: 4s; }
-  .bg img:nth-child(3) { animation-delay: 8s; } .bg img:nth-child(4) { animation-delay: 12s; }
-  .bg img:nth-child(5) { animation-delay: 16s; } .bg img:nth-child(6) { animation-delay: 20s; }
-  .bg img:nth-child(7) { animation-delay: 24s; } .bg img:nth-child(8) { animation-delay: 28s; }
-  .bg img:nth-child(9) { animation-delay: 32s; } .bg img:nth-child(10) { animation-delay: 36s; }
-  .bg img:nth-child(11) { animation-delay: 40s; } .bg img:nth-child(12) { animation-delay: 44s; }
-  .bg img:nth-child(13) { animation-delay: 48s; } .bg img:nth-child(14) { animation-delay: 52s; }
-  .bg img:nth-child(15) { animation-delay: 56s; }
+  body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: white; text-align: center; background: black; overflow-x: hidden; }
+  .bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; background: black; }
+  .bg img { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 100%; min-height: 100%; object-fit: cover; opacity: 0; animation: slide 75s infinite; }
+  
+  /* Animation pour les 15 photos */
+  .bg img:nth-child(1) { animation-delay: 0s; } .bg img:nth-child(2) { animation-delay: 5s; }
+  .bg img:nth-child(3) { animation-delay: 10s; } .bg img:nth-child(4) { animation-delay: 15s; }
+  .bg img:nth-child(5) { animation-delay: 20s; } .bg img:nth-child(6) { animation-delay: 25s; }
+  .bg img:nth-child(7) { animation-delay: 30s; } .bg img:nth-child(8) { animation-delay: 35s; }
+  .bg img:nth-child(9) { animation-delay: 40s; } .bg img:nth-child(10) { animation-delay: 45s; }
+  .bg img:nth-child(11) { animation-delay: 50s; } .bg img:nth-child(12) { animation-delay: 55s; }
+  .bg img:nth-child(13) { animation-delay: 60s; } .bg img:nth-child(14) { animation-delay: 65s; }
+  .bg img:nth-child(15) { animation-delay: 70s; }
   
   @keyframes slide { 0%, 15% { opacity: 1; } 20%, 100% { opacity: 0; } }
   
-  .section { 
-    height: 100vh; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
-    padding: 20px; 
-    box-sizing: border-box;
-  }
-  .typing { 
-    font-size: 1.6em; 
-    background: rgba(0,0,0,0.7); 
-    padding: 15px; 
-    border-radius: 10px; 
-    max-width: 85%; 
-    word-wrap: break-word;
-  }
-  video { max-width: 80%; border-radius: 10px; margin-top: 20px; }
+  .section { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 30px; box-sizing: border-box; }
+  .typing { font-size: 1.5em; background: rgba(0,0,0,0.7); padding: 20px; border-radius: 15px; max-width: 80%; line-height: 1.5; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+  video { max-width: 85%; border-radius: 15px; margin-top: 25px; border: 2px solid rgba(255,255,255,0.3); }
+  .heart { color: #ff4d4d; font-size: 1.2em; }
 </style>
 </head>
 <body>
@@ -74,30 +37,36 @@
   <img src="11.jpeg"> <img src="12.jpeg"> <img src="13.jpeg"> <img src="14.jpeg"> <img src="15.jpeg">
 </div>
 
-<div class="section"><div class="typing" data-text="Au début… je savais pas quoi dire"></div></div>
-<div class="section"><div class="typing" data-text="Mais en regardant ces moments…"></div></div>
-
+<div class="section"><div class="typing" data-text="Coucou Arielle... J'ai pris un petit moment pour préparer ça."></div></div>
+<div class="section"><div class="typing" data-text="Au début, je ne savais pas trop par où commencer pour te surprendre."></div></div>
+<div class="section"><div class="typing" data-text="Mais en revoyant toutes ces photos et ces vidéos de nous..."></div></div>
 <div class="section">
-    <div class="typing" data-text="Regarde ça 😂"></div>
+    <div class="typing" data-text="Je me suis rappelé à quel point on a vécu des trucs de fous 😂"></div>
     <video controls><source src="v1.mp4" type="video/mp4"></video>
 </div>
-
-<div class="section"><div class="typing" data-text="Tu es une personne incroyable ❤️"></div></div>
-
+<div class="section"><div class="typing" data-text="Arielle, t'es vraiment une personne à part, tu sais."></div></div>
+<div class="section"><div class="typing" data-text="Une personne rare, avec un grand cœur, qu'on a de la chance d'avoir à ses côtés."></div></div>
 <div class="section">
+    <div class="typing" data-text="Même si des fois t'es un peu... spéciale (regarde ça) 👀"></div>
     <video controls><source src="v2.mp4" type="video/mp4"></video>
 </div>
-
-<div class="section"><div class="typing" data-text="Merci d'être là"></div></div>
-
-<div class="section"><video controls><source src="v3.mp4" type="video/mp4"></video></div>
-<div class="section"><video controls><source src="v4.mp4" type="video/mp4"></video></div>
-
-<div class="section"><div class="typing" data-text="Joyeux anniversaire 🎉"></div></div>
-<div class="section"><div class="typing" data-text="Profite de ta journée, tu le mérites vraiment ❤️"></div></div>
+<div class="section"><div class="typing" data-text="Honnêtement, je suis super content que nos chemins se soient croisés. ❤️"></div></div>
+<div class="section"><div class="typing" data-text="Merci pour ton énergie, tes délires et ta présence au quotidien."></div></div>
+<div class="section">
+    <video controls><source src="v3.mp4" type="video/mp4"></video>
+</div>
+<div class="section"><div class="typing" data-text="Aujourd'hui c'est TA journée, alors profite à fond de chaque seconde."></div></div>
+<div class="section">
+    <div class="typing" data-text="On finit en beauté avec ce petit dossier final ! 🎬"></div>
+    <video controls><source src="v4.mp4" type="video/mp4"></video>
+</div>
+<div class="section"><div class="typing" data-text="Joyeux Anniversaire Arielle ! 🎉🎂"></div></div>
+<div class="section"><div class="typing" data-text="Que cette année soit remplie de bonheur, de succès et encore plus de délires. ❤️✨"></div></div>
 
 <script>
   window.addEventListener('click', () => { document.getElementById('player').play(); }, { once: true });
+  window.addEventListener('touchstart', () => { document.getElementById('player').play(); }, { once: true });
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -105,12 +74,12 @@
         let text = el.getAttribute("data-text");
         if (el.innerHTML === "" && text) {
           let i = 0;
-          function type() { if (i < text.length) { el.innerHTML += text.charAt(i); i++; setTimeout(type, 50); } }
+          function type() { if (i < text.length) { el.innerHTML += text.charAt(i); i++; setTimeout(type, 45); } }
           type();
         }
       }
     });
-  }, { threshold: 0.5 });
+  }, { threshold: 0.3 });
   document.querySelectorAll('.typing').forEach(t => observer.observe(t));
 </script>
 </body>
