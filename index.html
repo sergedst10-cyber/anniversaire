@@ -2,120 +2,75 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pour toi ❤️</title>
-
 <style>
-body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  color: white;
-  text-align: center;
-  overflow-x: hidden;
-}
-
-/* Background slideshow */
-.bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-
-.bg img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  animation: slide 24s infinite;
-}
-
-.bg img:nth-child(1) { animation-delay: 0s; }
-.bg img:nth-child(2) { animation-delay: 6s; }
-.bg img:nth-child(3) { animation-delay: 12s; }
-.bg img:nth-child(4) { animation-delay: 18s; }
-
-@keyframes slide {
-  0% { opacity: 0; }
-  10% { opacity: 1; }
-  25% { opacity: 1; }
-  35% { opacity: 0; }
-  100% { opacity: 0; }
-}
-
-/* Section */
-.section {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Typing */
-.typing {
-  font-size: 2em;
-  border-right: 2px solid white;
-  white-space: nowrap;
-  overflow: hidden;
-  padding: 20px;
-  background: rgba(0,0,0,0.4);
-  border-radius: 15px;
-}
+  body { margin: 0; font-family: Arial, sans-serif; color: white; text-align: center; background: black; overflow-x: hidden; }
+  .bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+  .bg img { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: slide 60s infinite; }
+  /* Animation pour les 15 photos (1.jpg à 15.jpg) */
+  .bg img:nth-child(1) { animation-delay: 0s; } .bg img:nth-child(2) { animation-delay: 4s; }
+  .bg img:nth-child(3) { animation-delay: 8s; } .bg img:nth-child(4) { animation-delay: 12s; }
+  .bg img:nth-child(5) { animation-delay: 16s; } .bg img:nth-child(6) { animation-delay: 20s; }
+  .bg img:nth-child(7) { animation-delay: 24s; } .bg img:nth-child(8) { animation-delay: 28s; }
+  .bg img:nth-child(9) { animation-delay: 32s; } .bg img:nth-child(10) { animation-delay: 36s; }
+  .bg img:nth-child(11) { animation-delay: 40s; } .bg img:nth-child(12) { animation-delay: 44s; }
+  .bg img:nth-child(13) { animation-delay: 48s; } .bg img:nth-child(14) { animation-delay: 52s; }
+  .bg img:nth-child(15) { animation-delay: 56s; }
+  @keyframes slide { 0%, 15% { opacity: 1; } 20%, 100% { opacity: 0; } }
+  .section { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; }
+  .typing { font-size: 1.6em; background: rgba(0,0,0,0.6); padding: 15px; border-radius: 10px; max-width: 85%; }
+  video { max-width: 80%; border-radius: 10px; margin-top: 20px; box-shadow: 0 0 15px rgba(255,255,255,0.2); }
 </style>
 </head>
-
 <body>
 
-<!-- 🎵 Musique -->
-<audio autoplay loop>
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
+<audio id="player" loop><source src="m.mp3" type="audio/mpeg"></audio>
 
-<!-- 🖼️ Images -->
 <div class="bg">
-  <img src="photo1.jpg">
-  <img src="photo2.jpg">
-  <img src="photo3.jpg">
-  <img src="photo4.jpg">
+  <img src="1.jpg"> <img src="2.jpg"> <img src="3.jpg"> <img src="4.jpg"> <img src="5.jpg">
+  <img src="6.jpg"> <img src="7.jpg"> <img src="8.jpg"> <img src="9.jpg"> <img src="10.jpg">
+  <img src="11.jpg"> <img src="12.jpg"> <img src="13.jpg"> <img src="14.jpg"> <img src="15.jpg">
 </div>
 
-<!-- 💌 Texte -->
 <div class="section"><div class="typing" data-text="Au début… je savais pas quoi dire"></div></div>
-<div class="section"><div class="typing" data-text="Mais en regardant tous ces moments…"></div></div>
-<div class="section"><div class="typing" data-text="J’ai compris quelque chose d’important"></div></div>
-<div class="section"><div class="typing" data-text="Tu es une personne incroyable"></div></div>
-<div class="section"><div class="typing" data-text="Une personne rare, qu’on ne croise pas tous les jours"></div></div>
-<div class="section"><div class="typing" data-text="Et honnêtement… je suis content de te connaître ❤️"></div></div>
-<div class="section"><div class="typing" data-text="Merci pour tous ces moments"></div></div>
-<div class="section"><div class="typing" data-text="Et ce n’est que le début…"></div></div>
+<div class="section"><div class="typing" data-text="Mais en regardant ces moments…"></div></div>
+
+<div class="section">
+    <div class="typing" data-text="Regarde ça 😂"></div>
+    <video controls><source src="v1.mp4" type="video/mp4"></video>
+</div>
+
+<div class="section"><div class="typing" data-text="Tu es une personne incroyable ❤️"></div></div>
+
+<div class="section">
+    <video controls><source src="v2.mp4" type="video/mp4"></video>
+</div>
+
+<div class="section"><div class="typing" data-text="Merci d'être là"></div></div>
+
+<div class="section"><video controls><source src="v3.mp4" type="video/mp4"></video></div>
+<div class="section"><video controls><source src="v4.mp4" type="video/mp4"></video></div>
+
 <div class="section"><div class="typing" data-text="Joyeux anniversaire 🎉"></div></div>
-<div class="section"><div class="typing" data-text="Profite de ta journée… tu le mérites vraiment ❤️"></div></div>
+<div class="section"><div class="typing" data-text="Profite de ta journée, tu le mérites vraiment ❤️"></div></div>
 
 <script>
-const texts = document.querySelectorAll('.typing');
-
-texts.forEach((el) => {
-  let text = el.getAttribute("data-text");
-  let i = 0;
-
-  function type() {
-    if (i < text.length) {
-      el.innerHTML += text.charAt(i);
-      i++;
-      setTimeout(type, 50);
-    }
-  }
-
-  window.addEventListener("scroll", () => {
-    const top = el.getBoundingClientRect().top;
-    if (top < window.innerHeight - 50 && el.innerHTML === "") {
-      type();
-    }
-  });
-});
+  window.addEventListener('click', () => { document.getElementById('player').play(); }, { once: true });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        let el = entry.target;
+        let text = el.getAttribute("data-text");
+        if (el.innerHTML === "" && text) {
+          let i = 0;
+          function type() { if (i < text.length) { el.innerHTML += text.charAt(i); i++; setTimeout(type, 50); } }
+          type();
+        }
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.typing').forEach(t => observer.observe(t));
 </script>
-
 </body>
 </html>
