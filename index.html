@@ -42,7 +42,11 @@
   .bg img:nth-child(11) { animation-delay: 50s; } .bg img:nth-child(12) { animation-delay: 55s; }
   .bg img:nth-child(13) { animation-delay: 60s; } .bg img:nth-child(14) { animation-delay: 65s; }
   .bg img:nth-child(15) { animation-delay: 70s; }
-  @keyframes slide { 0%, 15% { opacity: 1; } 20%, 100% { opacity: 0; } }
+@keyframes slide {
+  0%, 6.66% { opacity: 1; }  /* Visible pendant sa durée */
+  13.33%, 100% { opacity: 0; } /* Disparaît pour laisser la place aux autres */
+}
+
   
   /* Sections et Texte */
   .section { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 30px; box-sizing: border-box; }
@@ -58,6 +62,12 @@
     transition: background 0.3s;
   }
   #mute-btn:hover { background: rgba(255,255,255,0.2); }
+  @media (max-width: 600px) {
+  .typing { font-size: 1.2em; width: 90%; }
+  video { max-width: 95%; }
+  #start-button { padding: 15px 30px; font-size: 1.8em; }
+}
+
 </style>
 </head>
 <body>
@@ -80,23 +90,23 @@
   <div class="section"><div class="typing" data-text="Coucou Arielle... J'ai préparé une petite surprise pour tes 18 ans."></div></div>
   <div class="section"><div class="typing" data-text="En regardant toutes ces photos et vidéos de toi..."></div></div>
   <div class="section">
-      <div class="typing" data-text="Je me suis rappelé à quel point tu as une énergie unique 😂"></div>
+      <div class="typing" data-text="Je me suis rappelé à quel point tu as une énergie unique (tres tres unique)"></div>
       <video controls><source src="v1.mp4" type="video/mp4"></video>
   </div>
-  <div class="section"><div class="typing" data-text="Arielle, t'es vraiment une personne à part, authentique et fonceuse."></div></div>
+  <div class="section"><div class="typing" data-text="tu es vraiment une personne à part, authentique et fonceuse."></div></div>
   <div class="section"><div class="typing" data-text="Tu rayonnes par ta joie de vivre et ton caractère affirmé."></div></div>
   <div class="section">
-      <div class="typing" data-text="Même si des fois t'es un peu... une tornade (la preuve ici) 👀"></div>
+      <div class="typing" data-text="Même si des fois tu casse un peu les ...(pauvre brunel)"></div>
       <video controls><source src="v2.mp4" type="video/mp4"></video>
   </div>
   <div class="section"><div class="typing" data-text="T'es une personne avec un cœur immense, et t'en as pas toujours conscience."></div></div>
-  <div class="section"><div class="typing" data-text="Chaque moment passé avec toi est une aventure en soi."></div></div>
+  <div class="section"><div class="typing" data-text="Chaque moment passé avec toi est une aventure (meme si un peu risquer en soi.)"></div></div>
   <div class="section">
       <video controls><source src="v3.mp4" type="video/mp4"></video>
   </div>
   <div class="section"><div class="typing" data-text="Aujourd'hui c'est TA journée, célèbre-toi comme tu le mérites."></div></div>
   <div class="section">
-      <div class="typing" data-text="On finit par le moment le plus iconique de cette sélection !"></div>
+      <div class="typing" data-text="On finit en mode chetter 1X "></div>
       <video controls><source src="v4.mp4" type="video/mp4"></video>
   </div>
   <div class="section"><div class="typing" data-text="Joyeux Anniversaire Arielle ! 🎂❤️"></div></div>
