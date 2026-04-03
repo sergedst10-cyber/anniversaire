@@ -5,7 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pour Arielle ❤️</title>
 <style>
-  body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: white; text-align: center; background: black; overflow-x: hidden; }
+  body, html { margin: 0; padding: 0; width: 100%; height: 100%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: white; text-align: center; background: black; overflow: hidden; }
+
+  /* ÉCRAN DE DÉMARRAGE */
+  #start-screen {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(45s, #ff357a, #fff172, #3fffa2, #40e0d0);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+    display: flex; justify-content: center; align-items: center;
+    z-index: 100; transition: opacity 1s ease-out, visibility 1s;
+  }
+  @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+  
+  #start-button {
+    padding: 20px 50px; font-size: 2.5em; font-weight: bold; color: white;
+    background: rgba(255, 255, 255, 0.2); border: 4px solid white; border-radius: 50px;
+    cursor: pointer; box-shadow: 0 0 20px rgba(255,255,255,0.5);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  #start-button:hover { transform: scale(1.1); box-shadow: 0 0 30px rgba(255,255,255,0.8); }
+
+  /* LE SITE (caché au début) */
+  #main-content { display: none; opacity: 0; transition: opacity 1s ease-in; }
+  
+  /* Background slideshow */
   .bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; background: black; }
   .bg img { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 100%; min-height: 100%; object-fit: cover; opacity: 0; animation: slide 75s infinite; }
   
@@ -18,55 +42,102 @@
   .bg img:nth-child(11) { animation-delay: 50s; } .bg img:nth-child(12) { animation-delay: 55s; }
   .bg img:nth-child(13) { animation-delay: 60s; } .bg img:nth-child(14) { animation-delay: 65s; }
   .bg img:nth-child(15) { animation-delay: 70s; }
-  
   @keyframes slide { 0%, 15% { opacity: 1; } 20%, 100% { opacity: 0; } }
   
+  /* Sections et Texte */
   .section { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 30px; box-sizing: border-box; }
-  .typing { font-size: 1.5em; background: rgba(0,0,0,0.7); padding: 20px; border-radius: 15px; max-width: 80%; line-height: 1.5; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-  video { max-width: 85%; border-radius: 15px; margin-top: 25px; border: 2px solid rgba(255,255,255,0.3); }
-  .heart { color: #ff4d4d; font-size: 1.2em; }
+  .typing { font-size: 1.6em; background: rgba(0,0,0,0.7); padding: 20px; border-radius: 15px; max-width: 80%; line-height: 1.5; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+  video { max-width: 85%; max-height: 70vh; border-radius: 15px; margin-top: 25px; border: 2px solid rgba(255,255,255,0.3); }
+
+  /* BOUTON SOURDINE */
+  #mute-btn {
+    position: fixed; top: 20px; right: 20px; z-index: 200;
+    background: rgba(0,0,0,0.5); border: 2px solid white; color: white;
+    border-radius: 50%; width: 50px; height: 50px; font-size: 1.5em;
+    cursor: pointer; display: flex; justify-content: center; align-items: center;
+    transition: background 0.3s;
+  }
+  #mute-btn:hover { background: rgba(255,255,255,0.2); }
 </style>
 </head>
 <body>
 
 <audio id="player" loop><source src="m.mp3" type="audio/mpeg"></audio>
 
-<div class="bg">
-  <img src="1.jpeg"> <img src="2.jpeg"> <img src="3.jpeg"> <img src="4.jpeg"> <img src="5.jpeg">
-  <img src="6.jpeg"> <img src="7.jpeg"> <img src="8.jpeg"> <img src="9.jpeg"> <img src="10.jpeg">
-  <img src="11.jpeg"> <img src="12.jpeg"> <img src="13.jpeg"> <img src="14.jpeg"> <img src="15.jpeg">
+<div id="start-screen">
+  <button id="start-button">START</button>
 </div>
 
-<div class="section"><div class="typing" data-text="Coucou Arielle... J'ai pris un petit moment pour préparer ça."></div></div>
-<div class="section"><div class="typing" data-text="Au début, je ne savais pas trop par où commencer pour te surprendre."></div></div>
-<div class="section"><div class="typing" data-text="Mais en revoyant toutes ces photos et ces vidéos de nous..."></div></div>
-<div class="section">
-    <div class="typing" data-text="Je me suis rappelé à quel point on a vécu des trucs de fous 😂"></div>
-    <video controls><source src="v1.mp4" type="video/mp4"></video>
+<div id="main-content">
+  <button id="mute-btn">🔊</button>
+
+  <div class="bg">
+    <img src="1.jpeg"> <img src="2.jpeg"> <img src="3.jpeg"> <img src="4.jpeg"> <img src="5.jpeg">
+    <img src="6.jpeg"> <img src="7.jpeg"> <img src="8.jpeg"> <img src="9.jpeg"> <img src="10.jpeg">
+    <img src="11.jpeg"> <img src="12.jpeg"> <img src="13.jpeg"> <img src="14.jpeg"> <img src="15.jpeg">
+  </div>
+
+  <div class="section"><div class="typing" data-text="Coucou Arielle... J'ai préparé une petite surprise pour tes 18 ans."></div></div>
+  <div class="section"><div class="typing" data-text="En regardant toutes ces photos et vidéos de toi..."></div></div>
+  <div class="section">
+      <div class="typing" data-text="Je me suis rappelé à quel point tu as une énergie unique 😂"></div>
+      <video controls><source src="v1.mp4" type="video/mp4"></video>
+  </div>
+  <div class="section"><div class="typing" data-text="Arielle, t'es vraiment une personne à part, authentique et fonceuse."></div></div>
+  <div class="section"><div class="typing" data-text="Tu rayonnes par ta joie de vivre et ton caractère affirmé."></div></div>
+  <div class="section">
+      <div class="typing" data-text="Même si des fois t'es un peu... une tornade (la preuve ici) 👀"></div>
+      <video controls><source src="v2.mp4" type="video/mp4"></video>
+  </div>
+  <div class="section"><div class="typing" data-text="T'es une personne avec un cœur immense, et t'en as pas toujours conscience."></div></div>
+  <div class="section"><div class="typing" data-text="Chaque moment passé avec toi est une aventure en soi."></div></div>
+  <div class="section">
+      <video controls><source src="v3.mp4" type="video/mp4"></video>
+  </div>
+  <div class="section"><div class="typing" data-text="Aujourd'hui c'est TA journée, célèbre-toi comme tu le mérites."></div></div>
+  <div class="section">
+      <div class="typing" data-text="On finit par le moment le plus iconique de cette sélection !"></div>
+      <video controls><source src="v4.mp4" type="video/mp4"></video>
+  </div>
+  <div class="section"><div class="typing" data-text="Joyeux Anniversaire Arielle ! 🎂❤️"></div></div>
+  <div class="section"><div class="typing" data-text="Reste aussi solaire et pétillante que tu l'es. ❤️🎉✨"></div></div>
 </div>
-<div class="section"><div class="typing" data-text="Arielle, t'es vraiment une personne à part, tu sais."></div></div>
-<div class="section"><div class="typing" data-text="Une personne rare, avec un grand cœur, qu'on a de la chance d'avoir à ses côtés."></div></div>
-<div class="section">
-    <div class="typing" data-text="Même si des fois t'es un peu... spéciale (regarde ça) 👀"></div>
-    <video controls><source src="v2.mp4" type="video/mp4"></video>
-</div>
-<div class="section"><div class="typing" data-text="Honnêtement, je suis super content que nos chemins se soient croisés. ❤️"></div></div>
-<div class="section"><div class="typing" data-text="Merci pour ton énergie, tes délires et ta présence au quotidien."></div></div>
-<div class="section">
-    <video controls><source src="v3.mp4" type="video/mp4"></video>
-</div>
-<div class="section"><div class="typing" data-text="Aujourd'hui c'est TA journée, alors profite à fond de chaque seconde."></div></div>
-<div class="section">
-    <div class="typing" data-text="On finit en beauté avec ce petit dossier final ! 🎬"></div>
-    <video controls><source src="v4.mp4" type="video/mp4"></video>
-</div>
-<div class="section"><div class="typing" data-text="Joyeux Anniversaire Arielle ! 🎉🎂"></div></div>
-<div class="section"><div class="typing" data-text="Que cette année soit remplie de bonheur, de succès et encore plus de délires. ❤️✨"></div></div>
 
 <script>
-  window.addEventListener('click', () => { document.getElementById('player').play(); }, { once: true });
-  window.addEventListener('touchstart', () => { document.getElementById('player').play(); }, { once: true });
+  const startScreen = document.getElementById('start-screen');
+  const mainContent = document.getElementById('main-content');
+  const startButton = document.getElementById('start-button');
+  const player = document.getElementById('player');
+  const muteBtn = document.getElementById('mute-btn');
 
+  // Lancement du site
+  startButton.addEventListener('click', () => {
+    // Joue la musique
+    player.play();
+    
+    // Cache l'écran de démarrage
+    startScreen.style.opacity = '0';
+    setTimeout(() => {
+      startScreen.style.display = 'none';
+      // Affiche le contenu principal
+      mainContent.style.display = 'block';
+      setTimeout(() => { mainContent.style.opacity = '1'; }, 100);
+      document.body.style.overflowY = 'auto'; // Autorise le scroll
+    }, 1000);
+  });
+
+  // Gestion de la sourdine
+  muteBtn.addEventListener('click', () => {
+    if (player.muted) {
+      player.muted = false;
+      muteBtn.innerHTML = '🔊';
+    } else {
+      player.muted = true;
+      muteBtn.innerHTML = '🔇';
+    }
+  });
+
+  // Animation texte au scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
