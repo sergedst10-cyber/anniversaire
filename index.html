@@ -4,124 +4,252 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pour Arielle ❤️</title>
+
 <style>
-  body, html { margin: 0; padding: 0; width: 100%; height: 100%; font-family: 'Segoe UI', sans-serif; color: white; text-align: center; background: black; overflow-x: hidden; }
+body, html {
+  margin: 0; padding: 0; width: 100%; height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  color: white; text-align: center;
+  background: black; overflow-x: hidden;
+}
 
-  #start-screen {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(45s, #ff357a, #fff172, #3fffa2, #40e0d0);
-    background-size: 400% 400%;
-    animation: gradientBG 10s ease infinite;
-    display: flex; justify-content: center; align-items: center;
-    z-index: 100; transition: opacity 0.8s ease;
-  }
-  @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-  
-  #start-button { padding: 20px 50px; font-size: 2.2em; font-weight: bold; color: white; background: rgba(255, 255, 255, 0.2); border: 4px solid white; border-radius: 50px; cursor: pointer; }
+/* START SCREEN */
+#start-screen {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(45deg, #ff357a, #fff172, #3fffa2, #40e0d0);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+  display: flex; justify-content: center; align-items: center;
+  z-index: 100; transition: opacity 0.8s ease;
+}
 
-  #main-content { visibility: hidden; opacity: 0; transition: opacity 1s ease; }
-  
-  /* DIAPORAMA */
-  #slideshow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: black; }
-  #slideshow img { 
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-    min-width: 100%; min-height: 100%; object-fit: cover; 
-    opacity: 0; transition: opacity 1.5s ease-in-out; 
-  }
-  #slideshow img.active { opacity: 1; }
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-  .section { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 30px; box-sizing: border-box; }
-  .typing { font-size: 1.5em; background: rgba(0,0,0,0.7); padding: 20px; border-radius: 15px; max-width: 85%; line-height: 1.4; }
-  video { max-width: 85%; max-height: 65vh; border-radius: 15px; margin-top: 20px; border: 2px solid white; }
+#start-button {
+  padding: 20px 50px;
+  font-size: 2.2em;
+  font-weight: bold;
+  color: white;
+  background: rgba(255,255,255,0.2);
+  border: 4px solid white;
+  border-radius: 50px;
+  cursor: pointer;
+}
 
-  #mute-btn { position: fixed; top: 20px; right: 20px; z-index: 200; background: rgba(0,0,0,0.5); border: 2px solid white; color: white; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; }
+/* MAIN */
+#main-content {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+/* SLIDESHOW */
+#slideshow {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0; /* FIX IMPORTANT */
+}
+
+#slideshow img {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  min-width: 100%; min-height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out, transform 6s ease;
+}
+
+/* IMAGE VISIBLE PAR DEFAUT */
+#slideshow img:first-child {
+  opacity: 1;
+}
+
+#slideshow img.active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* TEXT */
+.section {
+  position: relative;
+  z-index: 2;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.typing {
+  font-size: 1.5em;
+  background: rgba(0,0,0,0.7);
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 85%;
+  line-height: 1.4;
+}
+
+/* VIDEO */
+video {
+  max-width: 85%;
+  max-height: 65vh;
+  border-radius: 15px;
+  margin-top: 20px;
+  border: 2px solid white;
+}
+
+/* MUTE BUTTON */
+#mute-btn {
+  position: fixed;
+  top: 20px; right: 20px;
+  z-index: 200;
+  background: rgba(0,0,0,0.5);
+  border: 2px solid white;
+  color: white;
+  border-radius: 50%;
+  width: 50px; height: 50px;
+  cursor: pointer;
+}
 </style>
 </head>
+
 <body>
 
-<audio id="player" loop><source src="m.mp3" type="audio/mpeg"></audio>
+<!-- AUDIO -->
+<audio id="player" loop autoplay muted>
+  <source src="m.mp3" type="audio/mpeg">
+</audio>
 
+<!-- START -->
 <div id="start-screen">
   <button id="start-button">START</button>
 </div>
 
+<!-- MAIN -->
 <div id="main-content">
   <button id="mute-btn" onclick="toggleMute()">🔊</button>
 
+  <!-- SLIDESHOW -->
   <div id="slideshow">
-    <img src="1.jpeg" class="active"> <img src="2.jpeg"> <img src="3.jpeg"> <img src="4.jpeg"> <img src="5.jpeg">
-    <img src="6.jpeg"> <img src="7.jpeg"> <img src="8.jpeg"> <img src="9.jpeg"> <img src="10.jpeg">
-    <img src="11.jpeg"> <img src="12.jpeg"> <img src="13.jpeg"> <img src="14.jpeg"> <img src="15.jpeg">
-    <img src="16.jpg"> <img src="17.jpg">
+    <img src="1.jpeg" class="active">
+    <img src="2.jpeg">
+    <img src="3.jpeg">
+    <img src="4.jpeg">
+    <img src="5.jpeg">
+    <img src="6.jpeg">
+    <img src="7.jpeg">
+    <img src="8.jpeg">
+    <img src="9.jpeg">
+    <img src="10.jpeg">
+    <img src="11.jpeg">
+    <img src="12.jpeg">
+    <img src="13.jpeg">
+    <img src="14.jpeg">
+    <img src="15.jpeg">
+    <img src="16.jpg">
+    <img src="17.jpg">
   </div>
 
+  <!-- TEXTE -->
   <div class="section"><div class="typing" data-text="Coucou Arielle... J'ai préparé une petite surprise pour tes 18 ans."></div></div>
   <div class="section"><div class="typing" data-text="En regardant toutes ces photos et vidéos de toi..."></div></div>
+
   <div class="section">
-      <div class="typing" data-text="Je me suis rappelé à quel point tu as une énergie unique (très très unique 😂)"></div>
-      <video controls><source src="v1.mp4" type="video/mp4"></video>
+    <div class="typing" data-text="Je me suis rappelé à quel point tu as une énergie unique 😂"></div>
+    <video controls><source src="v1.mp4"></video>
   </div>
+
   <div class="section"><div class="typing" data-text="Tu es vraiment une personne à part, authentique et fonceuse."></div></div>
   <div class="section"><div class="typing" data-text="Tu rayonnes par ta joie de vivre et ton caractère affirmé."></div></div>
+
   <div class="section">
-      <div class="typing" data-text="Même si des fois tu casses un peu les... (pauvre Brunel 😂) 👀"></div>
-      <video controls><source src="v2.mp4" type="video/mp4"></video>
+    <div class="typing" data-text="Même si des fois tu casses un peu les... pauvre Brunel 😂"></div>
+    <video controls><source src="v2.mp4"></video>
   </div>
-  <div class="section"><div class="typing" data-text="T'es une personne avec un cœur immense, et t'en as pas toujours conscience."></div></div>
-  <div class="section"><div class="typing" data-text="Chaque moment passé avec toi est une aventure (même si un peu risquée en soi...)"></div></div>
+
+  <div class="section"><div class="typing" data-text="T'es une personne avec un cœur immense ❤️"></div></div>
+  <div class="section"><div class="typing" data-text="Chaque moment avec toi est une aventure 😂"></div></div>
+
   <div class="section">
-      <video controls><source src="v3.mp4" type="video/mp4"></video>
+    <video controls><source src="v3.mp4"></video>
   </div>
-  <div class="section"><div class="typing" data-text="Aujourd'hui c'est TA journée, célèbre-toi comme tu le mérites."></div></div>
+
+  <div class="section"><div class="typing" data-text="Aujourd'hui c'est TA journée 🎉"></div></div>
+
   <div class="section">
-      <div class="typing" data-text="On finit en mode chetter 1X !"></div>
-      <video controls><source src="v4.mp4" type="video/mp4"></video>
+    <div class="typing" data-text="On finit en mode chetter 1X 😂🔥"></div>
+    <video controls><source src="v4.mp4"></video>
   </div>
-  <div class="section"><div class="typing" data-text="Joyeux Anniversaire Arielle ! 🎂❤️ 🎉"></div></div>
+
+  <div class="section"><div class="typing" data-text="Joyeux Anniversaire Arielle ❤️🎂"></div></div>
+
 </div>
 
 <script>
-  const player = document.getElementById('player');
-  const main = document.getElementById('main-content');
-  const slides = document.querySelectorAll('#slideshow img');
-  let currentSlide = 0;
+const player = document.getElementById('player');
+const main = document.getElementById('main-content');
+const slides = document.querySelectorAll('#slideshow img');
+let currentSlide = 0;
 
-  function nextSlide() {
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (currentSlide + 1) % slides.length;
-    slides[currentSlide].classList.add('active');
-  }
+function nextSlide() {
+  slides[currentSlide].classList.remove('active');
+  currentSlide = (currentSlide + 1) % slides.length;
+  slides[currentSlide].classList.add('active');
+}
 
-  document.getElementById('start-button').addEventListener('click', () => {
-    player.play();
-    setInterval(nextSlide, 4000); // Change toutes les 4 secondes
-    document.getElementById('start-screen').style.opacity = '0';
-    setTimeout(() => {
-      document.getElementById('start-screen').style.display = 'none';
-      main.style.visibility = 'visible';
-      main.style.opacity = '1';
-    }, 800);
-  });
+document.getElementById('start-button').addEventListener('click', () => {
+  player.muted = false;
+  player.play();
 
-  function toggleMute() {
-    player.muted = !player.muted;
-    document.getElementById('mute-btn').innerHTML = player.muted ? '🔇' : '🔊';
-  }
+  setTimeout(() => {
+    setInterval(nextSlide, 4000);
+  }, 1000);
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        let el = entry.target;
-        let text = el.getAttribute("data-text");
-        if (el.innerHTML === "" && text) {
-          let i = 0;
-          function type() { if (i < text.length) { el.innerHTML += text.charAt(i); i++; setTimeout(type, 50); } }
-          type();
+  document.getElementById('start-screen').style.opacity = '0';
+
+  setTimeout(() => {
+    document.getElementById('start-screen').style.display = 'none';
+    main.style.visibility = 'visible';
+    main.style.opacity = '1';
+  }, 800);
+});
+
+function toggleMute() {
+  player.muted = !player.muted;
+  document.getElementById('mute-btn').innerHTML = player.muted ? '🔇' : '🔊';
+}
+
+/* Typing effect */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      let el = entry.target;
+      let text = el.getAttribute("data-text");
+
+      if (el.innerHTML === "" && text) {
+        let i = 0;
+        function type() {
+          if (i < text.length) {
+            el.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, 50);
+          }
         }
+        type();
       }
-    });
-  }, { threshold: 0.3 });
-  document.querySelectorAll('.typing').forEach(t => observer.observe(t));
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.typing').forEach(t => observer.observe(t));
 </script>
+
 </body>
 </html>
